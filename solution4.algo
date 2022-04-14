@@ -1,0 +1,31 @@
+ALGORITHM solution2
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>
+    array1 : ARRAY_OF INTEGER;
+    array2 : ARRAY_OF INTEGER;
+    i,sum:=0 : INTEGER
+BEGIN
+    Read(array1)
+    Read(array2)
+    FOR i FROM 0 TO array1.length STEP 1  DO
+        htab.insert(array1[i], 1)
+    END_FOR
+    FOR i FROM 0 TO array2.length STEP 1  DO
+        IF (htab.lookup(i)) THEN
+            htab.insert(array2[i], 2)
+        ELSE
+            htab.insert(array2[i], 1)
+        END_IF
+    END_FOR
+    FOR i FROM 0 TO array1.length STEP 1  DO
+        IF (htab.get(array1[i]=1) THEN
+            sum := sum + array1[i];
+        END_IF
+    END_FOR
+    FOR i FROM 0 TO array2.length STEP 1  DO
+        IF (htab.get(array2[i]=1) THEN
+            sum := sum + array2[i];
+        END_IF
+    END_FOR
+    Write("sum of all distinct elements : ", sum);
+END

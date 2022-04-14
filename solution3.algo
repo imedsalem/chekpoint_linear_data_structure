@@ -1,0 +1,32 @@
+ALGORITHM solution2
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>
+    array1 : ARRAY_OF INTEGER;
+    array2 : ARRAY_OF INTEGER;
+    tab : ARRAY_OF INTEGER;
+    i,sum:=0 : INTEGER
+BEGIN
+    Read(array1)
+    Read(array2)
+    FOR i FROM 0 TO array1.length STEP 1  DO
+        htab.insert(array1[i], 1)
+    END_FOR
+    FOR i FROM 0 TO array2.length STEP 1  DO
+        IF (htab.lookup(i)) THEN
+            htab.insert(array2[i], 2)
+        ELSE
+            htab.insert(array2[i], 1)
+        END_IF
+    END_FOR
+    IF (array1.length>array2.length) THEN
+        tab = array2
+    ELSE
+        tab = array1
+    END_IF
+    FOR i FROM 0 TO tab.length STEP 1  DO
+        IF (htab.get(tab[i]=2) THEN
+            sum := sum + tab[i]*2;
+        END_IF
+    END_FOR
+    Write("Sum of all overlapping  elements : ", sum);
+END

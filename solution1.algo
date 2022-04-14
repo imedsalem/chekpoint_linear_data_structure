@@ -1,0 +1,18 @@
+ALGORITHM solution1
+VAR
+    array1 : ARRAY_OF INTEGER;
+    array2 : ARRAY_OF INTEGER;
+    i,j,sum:=0 : INTEGER
+BEGIN
+    
+    Read(array1)
+    Read(array2)
+    FOR i FROM 0 TO array1.length STEP 1  DO
+        FOR j FROM 0 TO array2.length STEP 1  DO
+            IF (array1[i]=array2[j]) THEN
+                sum := sum + setOne[i]*2
+            END_IF
+        END_FOR
+    END_FOR
+    Write("Sum of all overlapping  elements : ", sum);
+END
